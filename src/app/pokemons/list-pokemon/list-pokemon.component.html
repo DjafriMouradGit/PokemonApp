@@ -1,0 +1,25 @@
+<h1 class='center'>{{title}}</h1>
+<div class='container'>
+  <div class="row">
+
+    <app-pokemon-search></app-pokemon-search>
+    <!--s6 pour le mobile m4 pour les tablettes et les pcs 12/4=3 éléments par ligne-->
+    <div *ngFor='let pokemon of pokemons' class="col s6 m4">
+      <div class="card horizontal" (click)="selectPokemon(pokemon)" pkmnBorderCard>
+        <!--        pkmnBorderCard="red"  -->
+        <div class="card-image">
+          <img [src]="pokemon.picture">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <p>{{ pokemon.name }}</p>
+            <!-- on ajoute le pipe pour les dates, avec le bon format : -->
+            <p><small>{{ pokemon.created | date:"dd/MM/yyyy" }}</small></p>
+            <!-- on utilise la directive ngFor pour afficher tous les types d'un pokémon donnée -->
+            <span *ngFor='let type of pokemon.types' class="{{ type | pokemonTypeColor }}">{{ type }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
