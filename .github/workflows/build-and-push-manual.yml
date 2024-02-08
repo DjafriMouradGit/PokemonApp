@@ -1,0 +1,26 @@
+name: 🐳 Docker build & push (Manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        type: string
+        description: Tag de l'image à pousser
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: 290195
+          password: ${{ secrets.POKEMON_SECRET }}
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: 290195/projetcs:${{ inputs.tag }}
