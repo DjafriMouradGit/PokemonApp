@@ -23,4 +23,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: 290195/projetcs:${{ inputs.tag }}
+          tags: 290195/projetcs:pokemonapptag
