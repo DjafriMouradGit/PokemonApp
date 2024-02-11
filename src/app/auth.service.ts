@@ -17,6 +17,7 @@ export class AuthService {
     return of(true).pipe(
       delay(1000),
       tap(val => this.isLoggedIn = isLoggedIn)
+      console.log("test action")
     );
   }
 
